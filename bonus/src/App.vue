@@ -22,6 +22,7 @@ export default {
   mounted() {
     axios.get(store.apiUrl).then((response) => {
       store.pokemonList = response.data.docs;
+      store.loading = false;
     })
   },
 }

@@ -1,11 +1,13 @@
 <script>
 import AppCharacterCards from './AppCharacterCards.vue'
+import AppLoader from './AppLoader.vue'
 
 import { store } from '../store.js';
 
 export default {
     components:{
-        AppCharacterCards
+        AppCharacterCards,
+        AppLoader
     },
     data() {
         return {
@@ -16,11 +18,12 @@ export default {
 </script>
 <template>
     <div class="container d-flex justify-content-center align-items-center rounded-5 px-4 py-5 bg-white ">
-        <div class="row d-flex justify-content-center col-12 bg-secondary py-2 px-1 overflow-auto high">
+        <div class="row d-flex justify-content-center col-12 bg-secondary py-2 px-1 overflow-auto high" v-if="store.loading === false">
             <div v-for="(pokemon, index) in store.pokemonList" :key="index" class="col-6 col-md-4 col-lg-3 min">
                 <AppCharacterCards :myPokemon="pokemon" />
             </div>
         </div>
+        <AppLoader v-else/>
     </div>
 </template>
 <style lang="scss" scoped>
