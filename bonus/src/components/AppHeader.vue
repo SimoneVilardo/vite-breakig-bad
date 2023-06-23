@@ -1,14 +1,30 @@
 <script>
 import { store } from '../store.js';
-import AppSelect from './AppSelect.vue'
 
 export default {
-    components:{
-        AppSelect
-    },
     data() {
         return {
-            store
+            store,
+            typePokemon: [
+                "Bug",
+                "Dark",
+                "Dragon",
+                "Electric",
+                "Fairy",
+                "Fighting",
+                "Fire",
+                "Flying",
+                "Ghost",
+                "Grass",
+                "Ground",
+                "Ice",
+                "Normal",
+                "Poison",
+                "Psychic",
+                "Rock",
+                "Steel",
+                "Water"
+            ]
         }
     },    
 }
@@ -28,8 +44,13 @@ export default {
                     
                 </div>
             </div>
-            <div class="col-4">
-                <AppSelect />
+            <div class="col-4 py-3 d-flex justify-content-end">
+                <div class="col-4">
+                    <select class="form-control select-style" v-model="store.typeValue" @change="$emit('typeChange')">  
+                        <option value="" selected>Search Type</option>
+                        <option v-for="(type, index) in typePokemon" :key="index" :value="type">{{ type }}</option>
+                    </select>
+                </div>
             </div>
         </div>
     </div>
@@ -38,6 +59,11 @@ export default {
     .stile{
         color: white;
         font-size: 30px;
+        font-weight: bold;
+    }
+
+    .select-style{
+        font-size: 15px;
         font-weight: bold;
     }
 

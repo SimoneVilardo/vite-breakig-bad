@@ -20,16 +20,28 @@ export default {
   },
 
   mounted() {
-    axios.get(store.apiUrl).then((response) => {
-      store.pokemonList = response.data.docs;
-      store.loading = false;
-    })
+    this.getType()
+  },
+  methods: {
+    getType(){
+      let myUrl = store.apiUrl;
+
+      if(store.typeValue !== ''){
+        myUrl += `&eq[type1]=${store.typeValue}`;
+      }
+
+      axios.get(myUrl).then((response) => {
+        store.pokemonList = response.data.docs;
+        store.loading = false;
+      });
+
+    }
   },
 }
 </script>
 <template>
   <div>
-    <AppHeader />
+    <AppHeader @typeChange="getType"/>
     <AppMain />
   </div>
 </template>
