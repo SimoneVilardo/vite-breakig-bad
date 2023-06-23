@@ -1,7 +1,11 @@
 <script>
 import { store } from '../store.js';
+import AppSelect from './AppSelect.vue'
 
 export default {
+    components:{
+        AppSelect
+    },
     data() {
         return {
             store
@@ -12,16 +16,20 @@ export default {
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-6 d-flex ">
+            <div class="col-4 d-flex ">
                 <div class="water-circ m-2"></div>
                 <div class="fire-circ m-2"></div>
                 <div class="electric-circ m-2"></div>
                 <div class="grass-circ m-2"></div>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <div class="text-center stile">
                     {{ store.titleApp }}
+                    
                 </div>
+            </div>
+            <div class="col-4">
+                <AppSelect />
             </div>
         </div>
     </div>

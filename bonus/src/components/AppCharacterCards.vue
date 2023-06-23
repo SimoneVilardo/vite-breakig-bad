@@ -13,7 +13,7 @@ export default {
         <div>{{ myPokemon.type1 }}</div>
     </div>
 </template>
-<style lang="scss">
+<style lang="scss" scoped>
     img{
         width: 120px;
         height: 120px;
