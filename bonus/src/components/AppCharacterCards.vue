@@ -2,11 +2,18 @@
 export default {
     props:{
         myPokemon: Object
+    },
+    
+    computed:{
+        colorCard() {
+            return this.myPokemon.color.toLowerCase()
+        }
     }
+
 }
 </script>
 <template>
-    <div class="d-flex align-items-center m-2 space card" :class="myPokemon.type1 === 'Grass'? 'grass-bg' : myPokemon.type1 === 'Water' ? 'water-bg' : myPokemon.type1 === 'Fire'? 'fire-bg': ''">
+    <div class="d-flex align-items-center m-2 space card" :style="{'background-color': colorCard}">
         <img :src="myPokemon.imageUrl" :alt="myPokemon.name">
         <div>{{ myPokemon.number }}</div>
         <p><strong>{{ myPokemon.name }}</strong></p>
