@@ -1,12 +1,18 @@
 <script>
+import { store } from '../store.js'
 export default {
+    data() {
+        return {
+            store
+        }
+    },
     props:{
         myPokemon: Object
     },
     
     computed:{
         colorCard() {
-            return this.myPokemon.color.toLowerCase()
+            return store.colorMap[this.myPokemon.type1]
         }
     }
 
